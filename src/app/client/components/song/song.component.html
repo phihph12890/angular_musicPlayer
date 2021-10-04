@@ -1,0 +1,15 @@
+<hr>
+<div class="grid grid-cols-2 gap-3">
+    <div class="grid grid-cols-11 gap-2 flex items-center mb-2" *ngFor="let file of files">
+        <div class="col-span-3">
+            <img class="h-20" src="{{file.img}}" alt="">
+        </div>
+        <div class="col-span-6 items-center">
+            <h5 class="text-sm">{{file.name}}</h5>
+            <p class="text-xs">{{file.singer}}</p>
+        </div>
+        <div class="col-span-2">
+            <p class="text-sm"><i class="fas fa-headphones"></i> {{file.view}}</p>
+        </div>
+    </div>
+</div>

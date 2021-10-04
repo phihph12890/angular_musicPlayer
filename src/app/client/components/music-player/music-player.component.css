@@ -1,0 +1,28 @@
+/* .seeking {
+  -webkit-appearance: none;
+  outline: none;
+  border-radius: 10px;
+  background-color: gray;
+}
+
+.seeking::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 4px;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 30%;
+} */
+
+.spinner {
+  animation: spin 7s linear infinite;
+  animation-play-state: paused;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

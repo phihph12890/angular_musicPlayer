@@ -1,0 +1,42 @@
+<div class="grid grid-cols-11 gap-16 bg-[#2d1a4c] py-2">
+    <div class="col-span-3 text-center flex items-center pl-10">
+        <img id="song_cd" src="{{getCurrentSong().img}}" alt="" class=" h-[65px] w-[65px] rounded-full border border-gray-500 spinner">
+        <div class="mt-3 ml-5">
+            <h6 class="text-white" id="song_name">{{getCurrentSong().name}}</h6>
+            <p class="text-xs text-gray-300" id="song_singer">{{getCurrentSong().singer}}</p>
+        </div>
+        <audio src="" id="audio"></audio>
+    </div>
+    <div class="col-span-5 pt-2">
+        <div class="flex text-white justify-between w-[200px] mx-auto items-center mb-1">
+            <button class="cursor-pointer hover:text-purple-400" (click)="onRandom()" *ngIf="!isRandom"><i class="fas fa-random text-lg"></i></button>
+            <button class="cursor-pointer hover:text-purple-400 text-blue-500" (click)="onRandom()" *ngIf="isRandom"><i class="fas fa-random text-lg"></i></button>
+            <button class="cursor-pointer hover:text-purple-400" (click)="previous()"><i class="fas fa-step-backward text-lg"></i></button>
+            <button class="cursor-pointer hover:text-purple-400" id="play" (click)="play()" *ngIf="!isPlaying"><i class="far fa-play-circle text-3xl"></i></button>
+            <button class="cursor-pointer hover:text-purple-400" id="pause" (click)="onPlay()" *ngIf="isPlaying"><i class="far fa-pause-circle text-3xl"></i></button>
+            <button class="cursor-pointer hover:text-purple-400" (click)="next()"><i class="fas fa-step-forward text-lg"></i></button>
+            <button class="cursor-pointer hover:text-purple-400" (click)="onRepeat()" *ngIf="!isRepeat"><i class="fas fa-redo-alt text-lg"></i></button>
+            <button class="cursor-pointer hover:text-purple-400 text-blue-500" (click)="onRepeat()" *ngIf="isRepeat"><i class="fas fa-redo-alt text-lg"></i></button>
+        </div>
+        <div class="flex items-center justify-between px-[20px] ">
+            <div class="text-white">{{song_currentTimeString}}</div>
+            <input id="progress" type="range" (change)="changeProgress($event)" class="seeking w-4/5 h-[4px] outline-none mx-1 cursor-pointer" min="0" step="1" max="100" value="{{progressPercent}}">
+            <div id="song_duration" class="text-white">
+                <span class="text-gray-300" *ngIf="song_duration == 0">- - : - -</span>
+                <span class="text-gray-300" *ngIf="song_duration > 0">{{song_durationString}}</span> 
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-span-3 text-center text-white mt-2">
+        <p class="text-sm"><i class="fas fa-headphones"></i> {{getCurrentSong().view}}</p>
+        <div class="flex items-center justify-center">
+            <button *ngIf="volume == 0" (click)="onMute()" class="cursor-pointer"><i class="fas fa-volume-mute"></i> </button> &nbsp;
+            <button *ngIf="volume > 0" (click)="onMute()" class="cursor-pointer"><i class="fas fa-volume-up"></i>  </button>
+            <input id="volume" type="range" (change)="changeVolume($event)"  class="h-[5px] outline-none mx-1 cursor-pointer" min="0" step="0.01" max="1" value="{{volume}}">
+        </div>
+    </div>  
+</div>
+<script>
+    
+</script>
