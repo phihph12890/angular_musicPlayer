@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./song.component.css'],
 })
 export class SongComponent implements OnInit {
-  files = [
+  songs = [
     {
       id: 0,
       url: '../assets/Thức Giấc - Blue.mp3',
@@ -72,7 +72,7 @@ export class SongComponent implements OnInit {
       view: 635
     }
   ];
-
+  
   constructor() {}
 
   ngOnInit(): void {}
