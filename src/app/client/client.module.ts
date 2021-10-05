@@ -9,8 +9,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContentComponent } from './components/content/content.component';
 import { ListSongsComponent } from './components/list-songs/list-songs.component';
 import { ListRankSongsComponent } from './components/list-rank-songs/list-rank-songs.component';
-import { RankSongComponent } from './components/rank-song/rank-song.component';
-import { SongComponent } from './components/song/song.component';
 import { MusicPlayerComponent } from './components/music-player/music-player.component';
 
 
@@ -23,8 +21,6 @@ import { MusicPlayerComponent } from './components/music-player/music-player.com
     ContentComponent,
     ListSongsComponent,
     ListRankSongsComponent,
-    RankSongComponent,
-    SongComponent,
     MusicPlayerComponent
   ],
   imports: [CommonModule, ClientRoutingModule],

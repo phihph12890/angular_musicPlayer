@@ -7,6 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./list-songs.component.css'],
 })
 export class ListSongsComponent implements OnInit {
+  
   id = 0;
   title = '';
   genres = [
@@ -116,7 +117,10 @@ export class ListSongsComponent implements OnInit {
       this.title = dataGenres[0].name;
       console.log(this.title);
     }
-    
+  }
+
+  getSong(data:any){
+    console.log(data);
   }
 
   

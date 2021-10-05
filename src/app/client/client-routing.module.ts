@@ -20,6 +20,10 @@ const routes: Routes = [
     component: ClientComponent,
     children: [
       {
+        path: '', 
+        component: ClientComponent
+      },
+      {
         path: ':id', 
         component: ListSongsComponent
       }

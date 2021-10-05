@@ -1,48 +1,18 @@
-<div class="ml-3 mt-2 grid grid-cols-5">
-    <div class="col-span-1 text-center">
-        <div class="items-center mt-3">
-            <div class="">
-                <span class="text-3xl text-red-500">1</span>
-            </div>
-        </div>
-        <div class="items-center mt-5">
-            <div class="">
-                <span class="text-2xl text-green-500">2</span>
-            </div>
-        </div>
-        <div class="items-center mt-5">
-            <div class="">
-                <span class="text-xl text-yellow-500">3</span>
-            </div>
-        </div>
-        <div class="items-center mt-5">
-            <div class="">
-                <span>4</span>
-            </div>
-        </div>
-        <div class="items-center mt-5">
-            <div class="">
-                <span>5</span>
-            </div>
-        </div>
-        <div class="items-center mt-5">
-            <div class="">
-                <span>6</span>
-            </div>
-        </div>
-        <div class="items-center mt-5">
-            <div class="">
-                <span>7</span>
-            </div>
-        </div>
+<div>
+    <h2 class="text-blue-400 text-2xl ml-4">BXH BÀI HÁT <i class="fas fa-chevron-right"></i></h2>
+    <div class="flex justify-center text-sm">
+        <button class="bg-red-500 px-4 border-r  rounded-l-full text-white ">Ngày</button>
+        <button class="py-2 bg-gray-200 px-4 hover:bg-red-500 hover:text-white">Tuần</button>
+        <button class="bg-gray-200 px-4 border-l rounded-r-full hover:bg-red-500 hover:text-white">Tháng</button>
     </div>
-    <div class="col-span-4">
-        <app-rank-song></app-rank-song>
-        <app-rank-song></app-rank-song>
-        <app-rank-song></app-rank-song>
-        <app-rank-song></app-rank-song>
-        <app-rank-song></app-rank-song>
-        <app-rank-song></app-rank-song>
-        <app-rank-song></app-rank-song>
+</div>
+<div class="mt-4">
+    <div class="ml-1 flex items-center my-2" *ngFor="let song of songs, let i = index">
+        <p class="text-2xl text-red-500">{{i+1}}</p>
+        <img  src="{{song.img}}" class="w-20 h-[75px] ml-3" alt="">
+        <div class="ml-2">
+            <h5 class="text-sm">{{song.name}}</h5>
+            <p class="text-xs">{{song.singer}}</p>
+        </div>
     </div>
 </div>

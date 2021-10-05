@@ -1,7 +1,6 @@
 <div class=" mt-10 grid grid-cols-12 gap-5">
     <div class="col-span-9">
-        <!-- <h2 class="text-blue-400 text-2xl">DANH SÁCH BÀI HÁT <i class="fas fa-chevron-right"></i></h2> -->
-        <app-list-songs></app-list-songs>
+        <router-outlet></router-outlet>
         <div class="mt-4">
             <h2 class="text-blue-400 text-2xl">TOP 100 <i class="fas fa-chevron-right"></i></h2>
             <div class="flex justify-between mt-3">
@@ -23,18 +22,8 @@
             </div>
         </div>
     </div>
-
     <div class="col-span-3">
-        <h2 class="text-blue-400 text-2xl ml-4">BXH BÀI HÁT <i class="fas fa-chevron-right"></i></h2>
-        <div class="flex justify-center text-sm">
-            <button class="bg-red-500 px-4 border-r  rounded-l-full text-white ">Ngày</button>
-            <button class="py-2 bg-gray-200 px-4 hover:bg-red-500 hover:text-white">Tuần</button>
-            <button class="bg-gray-200 px-4 border-l rounded-r-full hover:bg-red-500 hover:text-white">Tháng</button>
-        </div>
-        <div>
-            <app-list-rank-songs></app-list-rank-songs>
-        </div>
+        <app-list-rank-songs></app-list-rank-songs>
     </div>
-    
 </div>
 
