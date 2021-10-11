@@ -10,6 +10,8 @@ import { ContentComponent } from './components/content/content.component';
 import { ListSongsComponent } from './components/list-songs/list-songs.component';
 import { ListRankSongsComponent } from './components/list-rank-songs/list-rank-songs.component';
 import { MusicPlayerComponent } from './components/music-player/music-player.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { MusicPlayerComponent } from './components/music-player/music-player.com
     ContentComponent,
     ListSongsComponent,
     ListRankSongsComponent,
-    MusicPlayerComponent
+    MusicPlayerComponent,
+    HomePageComponent,
+    CategoryPageComponent
   ],
   imports: [CommonModule, ClientRoutingModule],
 })

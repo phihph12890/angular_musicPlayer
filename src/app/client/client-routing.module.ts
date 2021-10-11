@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientComponent } from './client.component';
-import { ListRankSongsComponent } from './components/list-rank-songs/list-rank-songs.component';
-import { ListSongsComponent } from './components/list-songs/list-songs.component';
+import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 const routes: Routes = [
   { 
@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '', 
-        component: ListSongsComponent
+        component: HomePageComponent
       }
     ]
   },
@@ -20,12 +20,8 @@ const routes: Routes = [
     component: ClientComponent,
     children: [
       {
-        path: '', 
-        component: ClientComponent
-      },
-      {
         path: ':id', 
-        component: ListSongsComponent
+        component: CategoryPageComponent
       }
     ]
   }

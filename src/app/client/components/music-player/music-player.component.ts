@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-music-player',
@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./music-player.component.css'],
 })
 export class MusicPlayerComponent implements OnInit {
+  @Input() songChildren1: any;
+  @Input() playList: any;
+
   isPlaying = false;
   checkSpin = false;
   isRandom = false;
@@ -28,83 +31,30 @@ export class MusicPlayerComponent implements OnInit {
   songs = [
     {
       id: 0,
+      genre: 1,
       url: '../assets/Thức Giấc - Blue.mp3',
-      name: 'Thức giấc',
+      name: 'Thức giấc - Blue',
       singer: 'Dalab',
       img: 'https://avatar-ex-swe.nixcdn.com/song/share/2021/07/14/f/9/f/e/1626231011678.jpg',
       view: 120,
     },
-    {
-      id: 1,
-      url: '../assets/Người Ấy - Trịnh Thăng Bình - Anh Tú (Cover).mp3',
-      name: 'Người ấy',
-      singer: 'Trịnh Thăng Bình',
-      img: 'https://i.ytimg.com/vi/1Tj1wSfRkZg/maxresdefault.jpg',
-      view: 48,
-    },
-    {
-      id: 2,
-      url: '../assets/NguoiKhocCungAnh-HoQuangHieu-6998990.mp3',
-      name: 'Người khóc cùng anh',
-      singer: 'Hồ Quang Hiếu',
-      img: 'https://i.ytimg.com/vi/5XlX0VEn7ys/maxresdefault.jpg',
-      view: 31,
-    },
-    {
-      id: 3,
-      url: '../assets/AnhChangSaoMa-KhangViet-5414914.mp3',
-      name: 'Anh chẳng sao mà',
-      singer: 'Khang Việt',
-      img: 'https://i.ytimg.com/vi/zlEfoN7nP1A/maxresdefault.jpg',
-      view: 84,
-    },
-    {
-      id: 4,
-      url: '../assets/AnhMetRoi-AnhQuanIdol-6720878.mp3',
-      name: 'Anh mệt rồi',
-      singer: 'Anh Quân Idol',
-      img: 'https://i.ytimg.com/vi/wAQnEYVcOq4/maxresdefault.jpg',
-      view: 15,
-    },
-    {
-      id: 5,
-      url: '../assets/ChangGiDepDeTrenDoiMai-KhangViet-5183426.mp3',
-      name: 'Chẳng gì đẹp đẽ trên đời mãi',
-      singer: 'Khang Việt',
-      img: 'https://i.ytimg.com/vi/HITH-RzNRu0/maxresdefault.jpg',
-      view: 465,
-    },
-    {
-      id: 6,
-      url: '../assets/CuocSongEmOnKhong-AnhTuTheVoice-5404548.mp3',
-      name: 'Cuộc sống em ổn không?',
-      singer: 'Anh Tú TheVoice',
-      img: 'https://i.ytimg.com/vi/mJMR2RetTks/maxresdefault.jpg',
-      view: 165,
-    },
-    {
-      id: 7,
-      url: '../assets/AnhKhacHayEmKhac-KhacViet_3ec8n.mp3',
-      name: 'Anh khác hay em khác?',
-      singer: 'Khắc Việt',
-      img: 'https://i.ytimg.com/vi/ZTbKpBzL7hE/maxresdefault.jpg',
-      view: 635,
-    },
   ];
 
-  //lấy thông tin bài hát hiện tại
+
+  // lấy thông tin bài hát hiện tại
   getCurrentSong() {
     return this.songs[this.currentIndex];
   }
+
   //tải thông tin bài hát hiện tại
   loadCurrentSong() {
     // document.querySelector('#song_name')!.textContent = this.getCurrentSong().name;
     // document.querySelector('#song_singer')!.textContent = this.getCurrentSong().singer;
     // document.querySelector('#song_cd')!.setAttribute('src', `${this.getCurrentSong().img}`);
     this.audioObj.src = this.getCurrentSong().url;
-    console.log(this.song_duration);
     this.audioObj.load();
   }
+
   start() {
     //tải thông tin bài hát đầu tiên khi chạy web
     this.loadCurrentSong();
@@ -117,6 +67,7 @@ export class MusicPlayerComponent implements OnInit {
   ngOnInit(): void {
     this.start();
   }
+
   //chức năng bật tắt play/pause
   onPlay() {
     this.isPlaying = !this.isPlaying;
@@ -139,7 +90,7 @@ export class MusicPlayerComponent implements OnInit {
   onMute() {
     if (this.audioObj.volume > 0) {
       this.volume = 0;
-      this.audioObj.volume = 0
+      this.audioObj.volume = 0;
     } else {
       this.volume = 1;
       this.audioObj.volume = 1;

@@ -1,18 +1,14 @@
-<!-- <div class="">
+<div class="">
     <div class="container">
         <app-header></app-header>
     </div>
     <div class="container">
-        <app-banner></app-banner>
-    </div>
-    <div class="container">
-        <router-outlet></router-outlet>
+        <div class="mt-4">
+            <app-list-songs [songChildren]="songs"></app-list-songs>
+        </div>
     </div>
     <div class=" fixed bottom-0 left-0 right-0 z-50">
         <app-music-player></app-music-player>
     </div>
     <app-footer></app-footer>
-</div> -->
-
-<router-outlet></router-outlet>
-
+</div>
