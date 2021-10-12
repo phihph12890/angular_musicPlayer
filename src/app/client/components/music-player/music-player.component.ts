@@ -1,16 +1,21 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 
 @Component({
   selector: 'app-music-player',
   templateUrl: './music-player.component.html',
   styleUrls: ['./music-player.component.css'],
 })
-export class MusicPlayerComponent implements OnInit {
+export class MusicPlayerComponent implements OnInit, OnChanges {
   @Input() songChildren1: any;
   @Input() playList: any;
 
   isPlaying = false;
-  checkSpin = false;
   isRandom = false;
   isRepeat = false;
   progressPercent: number = 0;
@@ -20,14 +25,8 @@ export class MusicPlayerComponent implements OnInit {
   song_currentTimeString: string = '00:00';
 
   audioObj = new Audio();
-  // song_name = document.querySelector('#song_name');
-  // song_singer = document.querySelector('#song_singer');
-  // song_cd = document.querySelector('#song_cd') as HTMLElement;
-  // playBtn = document.querySelector('#play') as HTMLElement;
-  // pauseBtn = document.querySelector('#pause') as HTMLElement;
-  // progress = document.querySelector('#progress') as HTMLInputElement;
-
   currentIndex = 0;
+
   songs = [
     {
       id: 0,
@@ -40,17 +39,19 @@ export class MusicPlayerComponent implements OnInit {
     },
   ];
 
-
   // lấy thông tin bài hát hiện tại
   getCurrentSong() {
+    // if (this.songs.length == 1) {
+    //   this.currentIndex = 0
+    // } else {
+    //   this.currentIndex = this.songs.length-1;
+    // }
+    this.currentIndex = this.songs.length-1;
     return this.songs[this.currentIndex];
   }
 
   //tải thông tin bài hát hiện tại
   loadCurrentSong() {
-    // document.querySelector('#song_name')!.textContent = this.getCurrentSong().name;
-    // document.querySelector('#song_singer')!.textContent = this.getCurrentSong().singer;
-    // document.querySelector('#song_cd')!.setAttribute('src', `${this.getCurrentSong().img}`);
     this.audioObj.src = this.getCurrentSong().url;
     this.audioObj.load();
   }
@@ -66,6 +67,18 @@ export class MusicPlayerComponent implements OnInit {
 
   ngOnInit(): void {
     this.start();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.playList.currentValue != undefined) {
+      let existed = this.songs.findIndex(ele => ele.id == changes.playList.currentValue.id);
+      if(existed == -1){
+        this.songs.push(changes.playList.currentValue);
+      }
+      this.loadCurrentSong();
+      this.play();
+    }
+    
+    console.log(this.songs);
   }
 
   //chức năng bật tắt play/pause
@@ -83,6 +96,7 @@ export class MusicPlayerComponent implements OnInit {
     this.isRandom = !this.isRandom;
   }
 
+  //chức năng bật tắt repeat
   onRepeat() {
     this.isRepeat = !this.isRepeat;
   }
@@ -100,7 +114,6 @@ export class MusicPlayerComponent implements OnInit {
   // play nhạc
   play() {
     this.isPlaying = true;
-    // this.checkSpin = true;
     this.audioObj.play();
     (
       document.querySelector('#song_cd') as HTMLElement
@@ -110,7 +123,6 @@ export class MusicPlayerComponent implements OnInit {
   //pause nhạc
   pause() {
     this.isPlaying = false;
-    // this.checkSpin = false;
     this.audioObj.pause();
     (
       document.querySelector('#song_cd') as HTMLElement

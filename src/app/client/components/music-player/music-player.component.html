@@ -29,7 +29,20 @@
         </div>
     </div>
     <div class="col-span-3 text-center text-white mt-2">
-        <p class="text-sm"><i class="fas fa-headphones"></i> {{getCurrentSong().view}}</p>
+        <div class="flex justify-center">
+            <p class="text-sm"><i class="fas fa-headphones"></i> {{getCurrentSong().view}} &nbsp; &nbsp; &nbsp; 
+            <div class="group">
+                <button ><i class="fas fa-list-ul"></i></button>
+                <ul class="absolute hidden group-hover:block bottom-[80px] right-[10px] bg-[#2d1a4c] rounded-md pr-[32px] text-left pt-3">
+                    <li class="" *ngFor="let song of songs">
+                        <p>
+                            <i class="fas fa-dot-circle text-xs"></i>  &nbsp; 
+                            {{song.name}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <div class="flex items-center justify-center">
             <button *ngIf="volume == 0" (click)="onMute()" class="cursor-pointer"><i class="fas fa-volume-mute"></i> </button> &nbsp;
             <button *ngIf="volume > 0" (click)="onMute()" class="cursor-pointer"><i class="fas fa-volume-up"></i>  </button>

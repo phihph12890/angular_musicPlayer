@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HomePageComponent implements OnInit {
   public songs:any;
   public getSong:string[]=[];
+  public dataSong:any
+
   constructor() { }
 
   ngOnInit(): void {
@@ -69,8 +71,7 @@ export class HomePageComponent implements OnInit {
     ];
   }
   getLoadSongParent(data:any){
-    this.getSong.push(data);
-    console.log(this.getSong);
-  }
+    this.dataSong = data
 
+  }
 }
