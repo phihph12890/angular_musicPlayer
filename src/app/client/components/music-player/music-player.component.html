@@ -29,10 +29,10 @@
         </div>
     </div>
     <div class="col-span-3 text-center text-white mt-2">
-        <div class="flex justify-center">
+        <div class="flex justify-center ">
             <p class="text-sm"><i class="fas fa-headphones"></i> {{getCurrentSong().view}} &nbsp; &nbsp; &nbsp; 
             <div class="group">
-                <button ><i class="fas fa-list-ul"></i></button>
+                <button class="cursor-pointer hover:text-purple-400" ><i class="fas fa-list-ul"></i></button>
                 <ul class="absolute hidden group-hover:block bottom-[80px] right-[10px] bg-[#2d1a4c] rounded-md pr-[32px] text-left pt-3">
                     <li class="" *ngFor="let song of songs">
                         <p>
@@ -41,6 +41,9 @@
                         </p>
                     </li>
                 </ul>
+            </div>
+            <div>
+                <button class="ml-5 cursor-pointer hover:text-purple-400" (click)="deletePlayList()"><i class="fas fa-trash-alt"></i></button>
             </div>
         </div>
         <div class="flex items-center justify-center">
