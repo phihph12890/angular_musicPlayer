@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
   public songs:any;
-  public getSong:string[]=[];
-  public dataSong:any
+  public dataSong:any;
 
   constructor() { }
 

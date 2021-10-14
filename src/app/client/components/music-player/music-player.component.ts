@@ -60,6 +60,7 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.start();
+    this.otherPage()
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -219,6 +220,12 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
     localStorage.removeItem('playList');
     localStorage.setItem('playList', JSON.stringify(this.songs));
     location.reload();
+  }
+
+  otherPage(){
+    window.addEventListener("hashchange", function(){
+      console.log(1);
+    })
   }
 }
 

@@ -110,6 +110,7 @@ export class ListSongsComponent implements OnInit {
   }
 
   getSong(data: any) {
+    
     this.getLoadSong.emit(data);
   }
 }

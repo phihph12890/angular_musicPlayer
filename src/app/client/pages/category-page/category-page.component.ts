@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CategoryPageComponent implements OnInit {
   public songs:any;
+  public dataSong:any;
   public categories:any;
   id_cate = 0;
   title_cate = '';
@@ -65,5 +66,8 @@ export class CategoryPageComponent implements OnInit {
       this.title_cate = dataCategory[0].name;
       console.log(this.title_cate);
     }
+  }
+  getLoadSongParent(data:any){
+    this.dataSong = data;
   }
 }
