@@ -22,6 +22,10 @@ const songSchema = new mongoose.Schema({
     url: {
         type: String,
         required: true
+    },
+    view: {
+        type: Number,
+        default: 0
     }
 }, { timestamps: true });
 

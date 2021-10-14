@@ -1,6 +1,12 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import songRoutes from './routes/song';
+import categoryRoutes from './routes/category';
+
+import cors from 'cors';
+
+
 const app = express();
 dotenv.config()
 
@@ -17,6 +23,12 @@ mongoose.connection.on('error', err => {
 
 // Middleware
 app.use(express.json());
+app.use(cors({ credentials: 'same-origin' }));
+
+//Routes
+app.use('/api', songRoutes);
+app.use('/api', categoryRoutes);
+
 
 const port = process.env.PORT || 8000
 app.listen(port, () => {
