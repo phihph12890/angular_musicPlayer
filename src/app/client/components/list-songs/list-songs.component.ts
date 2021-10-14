@@ -9,9 +9,10 @@ import { ActivatedRoute } from '@angular/router';
 export class ListSongsComponent implements OnInit {
   @Input() songChildren: any;
   @Output() getLoadSong = new EventEmitter<any>();
-  id_genre = 0;
-  title = '';
-  genres = [
+  @Input() id_cate:any;
+  @Input() title_cate:any;
+  
+  categories = [
     {
       id: 1,
       name: 'Nhạc trẻ',
@@ -105,20 +106,7 @@ export class ListSongsComponent implements OnInit {
   // ];
   constructor(public route: ActivatedRoute) {}
   ngOnInit(): void {
-    this.getGenre();
     console.log(this.songChildren);
-  }
-
-  getGenre() {
-    this.id_genre = this.route.snapshot.params['id'];
-    console.log('id:', this.id_genre);
-    let dataGenres = this.genres.filter((e) => {
-      return e.id == this.id_genre;
-    });
-    if (dataGenres.length > 0) {
-      this.title = dataGenres[0].name;
-      console.log(this.title);
-    }
   }
 
   getSong(data: any) {

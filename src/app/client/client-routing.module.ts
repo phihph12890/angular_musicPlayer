@@ -16,7 +16,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'genre', 
+    path: 'category', 
     component: ClientComponent,
     children: [
       {

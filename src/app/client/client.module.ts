@@ -25,7 +25,7 @@ import { CategoryPageComponent } from './pages/category-page/category-page.compo
     ListRankSongsComponent,
     MusicPlayerComponent,
     HomePageComponent,
-    CategoryPageComponent
+    CategoryPageComponent,
   ],
   imports: [CommonModule, ClientRoutingModule],
 })

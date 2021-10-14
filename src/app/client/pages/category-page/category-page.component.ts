@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-category-page',
@@ -7,7 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryPageComponent implements OnInit {
   public songs:any;
-  constructor() { }
+  public categories:any;
+  id_cate = 0;
+  title_cate = '';
+  constructor(public route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.songs = [
@@ -30,8 +34,36 @@ export class CategoryPageComponent implements OnInit {
         view: 48,
       },
     ];
+    this.categories = [
+      {
+        id: 1,
+        name: 'Nhạc trẻ',
+      },
+      {
+        id: 2,
+        name: 'Nhạc Cách mạng',
+      },
+      {
+        id: 3,
+        name: 'Rap Việt',
+      },
+      {
+        id: 4,
+        name: 'Nhạc Vàng',
+      },
+    ]
+    this.getCategory();
   }
-  songbyCate = [
 
-  ]
+  getCategory() {
+    this.id_cate = this.route.snapshot.params['id'];
+    console.log('id:', this.id_cate);
+    let dataCategory = this.categories.filter((e:any) => {
+      return e.id == this.id_cate;
+    });
+    if (dataCategory.length > 0) {
+      this.title_cate = dataCategory[0].name;
+      console.log(this.title_cate);
+    }
+  }
 }

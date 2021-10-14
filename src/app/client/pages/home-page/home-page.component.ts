@@ -71,7 +71,6 @@ export class HomePageComponent implements OnInit {
     ];
   }
   getLoadSongParent(data:any){
-    this.dataSong = data
-
+    this.dataSong = data;
   }
 }

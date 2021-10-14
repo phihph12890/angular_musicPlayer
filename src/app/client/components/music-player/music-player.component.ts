@@ -12,7 +12,6 @@ import {
   styleUrls: ['./music-player.component.css'],
 })
 export class MusicPlayerComponent implements OnInit, OnChanges {
-  @Input() songChildren1: any;
   @Input() playList: any;
 
   isPlaying = false;
@@ -219,21 +218,7 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
     this.songs.splice(1, this.songs.length - 1);
     localStorage.removeItem('playList');
     localStorage.setItem('playList', JSON.stringify(this.songs));
+    location.reload();
   }
 }
 
-// pause() {
-//   console.log('click pause');
-//   this.audioObj.pause();
-// }
-// stop() {
-//   console.log('click stop');
-//   this.audioObj.pause();
-//   this.audioObj.currentTime = 0;
-// }
-// openFile(url: any) {
-//   this.audioObj.src = url;
-//   this.audioObj.load();
-//   this.audioObj.play();
-//   console.log(url);
-// }

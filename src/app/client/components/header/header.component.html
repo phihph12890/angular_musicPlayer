@@ -3,10 +3,10 @@
         <img src="https://boxmedia.com.vn/wp-content/uploads/2018/12/nhac-cua-tui.jpg" alt="">
     </a>
     <ul class="flex justify-items-stretch text-sm font-semibold pt-3">
-        <li class="pr-3 hover:text-blue-400 cursor-pointer group relative">Trang chủ</li>
+        <li class="pr-3 hover:text-blue-400 cursor-pointer group relative"><a routerLink="/" class="no-underline text-gray-900 hover:text-blue-500">Trang chủ</a></li>
         <li class="px-3 hover:text-blue-400 cursor-pointer group pb-1">Thể loại
             <ul  class=" absolute hidden group-hover:block bg-white border border-gray-300 -ml-8 z-10 mt-1 pt-2">
-                <li class="flex items-center h-10 hover:text-blue-500 pr-5" *ngFor="let genre of genres"><a routerLink="/genre/{{genre.id}}" class="no-underline text-gray-900 hover:text-blue-500" >{{genre.name}}</a></li>
+                <li class="flex items-center h-10 hover:text-blue-500 pr-5" *ngFor="let category of categories"><a routerLink="/category/{{category.id}}" class="no-underline text-gray-900 hover:text-blue-500" >{{category.name}}</a></li>
             </ul> 
         </li>
         <li class="px-3 hover:text-blue-400 cursor-pointer group">Tuyển tập</li>
