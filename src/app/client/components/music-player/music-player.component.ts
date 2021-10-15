@@ -5,6 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
+import { SongService } from '../../../service/song.service';
 
 @Component({
   selector: 'app-music-player',
@@ -24,20 +25,26 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
   song_currentTimeString: string = '00:00';
 
   audioObj = new Audio();
-  
+
   songs = [
     {
-      _id: 0,
-      genre: 1,
-      url: '../assets/Thức Giấc - Blue.mp3',
-      name: 'Thức giấc - Blue',
-      singer: 'Dalab',
+      view: 0,
+      _id: '61685b43dfaea8493c41fa36',
+      category: {
+        _id: '616847fb34556933f4d1dd91',
+        name: 'Nhạc Rap, HipHop',
+      },
+      name: '2AM',
       image:
-        'https://avatar-ex-swe.nixcdn.com/song/share/2021/07/14/f/9/f/e/1626231011678.jpg',
-      view: 120,
+        'https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/covers/3/4/34b2e5792d3f467216560a317a6ff7f2_1460691568.jpg',
+      singer: 'JustaTee, BigDaddy',
+      url: 'https://mp3-320s1-zmp3.zadn.vn/870b53eff5ab1cf545ba/7451055051003544818?authen=exp=1634401788~acl=/870b53eff5ab1cf545ba/*~hmac=baa90fe28668e5ee94a837419c5f327d&fs=MTYzNDIyODk4ODQyMnx3ZWJWNnwxMDmUsIC1OTE5OTYxfDExMy4xNjgdUngNTIdUngMTmUsIC0',
+      createdAt: '2021-10-14T16:30:59.424Z',
+      updatedAt: '2021-10-14T16:30:59.424Z',
+      __v: 0,
     },
   ];
-  currentIndex = this.songs.length-1;
+  currentIndex = this.songs.length - 1;
 
   // lấy thông tin bài hát hiện tại
   getCurrentSong() {
@@ -47,7 +54,6 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
   //tải thông tin bài hát hiện tại
   loadCurrentSong() {
     this.audioObj.src = this.getCurrentSong().url;
-    console.log(this.getCurrentSong());
     this.audioObj.load();
   }
 
@@ -56,10 +62,9 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
     this.loadCurrentSong();
     this.seeking();
     this.ended();
-    
   }
 
-  constructor() {}
+  constructor(public songService: SongService) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('playList')) {
@@ -70,10 +75,32 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
     this.start();
   }
 
+  getSongById() {
+    this.songService.read(this.getCurrentSong()._id).subscribe((data) => {
+      console.log(data);
+    });
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.playList.currentValue != undefined) {
-      changes.playList.currentValue.view++;
-      console.log(changes.playList.currentValue);
+      let view = changes.playList.currentValue.view;
+      view++;
+      console.log(view);
+      const newData = {
+        category: `${changes.playList.currentValue.category._id}`,
+        name: `${changes.playList.currentValue.name}`,
+        image: `${changes.playList.currentValue.image}`,
+        singer: `${changes.playList.currentValue.singer}`,
+        url: `${changes.playList.currentValue.url}`,
+        view: `${view}`,
+      };
+      this.songService
+        .update(changes.playList.currentValue._id, newData)
+        .subscribe((data) => {
+          console.log("OK");
+        });
+
+      
       let existed = this.songs.findIndex(
         (element) => element._id == changes.playList.currentValue._id
       );
@@ -81,7 +108,6 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
         this.songs.push(changes.playList.currentValue);
         localStorage.setItem('playList', JSON.stringify(this.songs));
         this.currentIndex++;
-        console.log(this.currentIndex);
       } else {
         this.songs.splice(existed, 1);
         this.songs.push(changes.playList.currentValue);
@@ -94,8 +120,6 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
       this.loadCurrentSong();
       this.play();
     }
-
-    console.log(this.songs);
   }
 
   //chức năng bật tắt play/pause
@@ -132,6 +156,26 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
   play() {
     this.isPlaying = true;
     this.audioObj.play();
+
+    this.songService.read(this.getCurrentSong()._id).subscribe((data) => {
+      let newView = data.view;
+      newView++;
+      console.log(newView);
+      const newData = {
+        category: `${data.category._id}`,
+        name: `${data.name}`,
+        image: `${data.image}`,
+        singer: `${data.singer}`,
+        url: `${data.url}`,
+        view: `${newView}`,
+      };
+      this.songService
+        .update(this.getCurrentSong()._id, newData)
+        .subscribe((data) => {
+          console.log("OK");
+        });
+    });
+
     (
       document.querySelector('#song_cd') as HTMLElement
     ).style.animationPlayState = 'running';
