@@ -34,6 +34,26 @@ export const list = (req, res) => {
             res.json(data)
         })
 }
+
+export const listLimit = (req, res) => {
+    let order = req.query.order ? req.query.order : 'asc';
+    let sortBy = req.query.sortBy ? req.query.sortBy : '_id';
+    let limit = req.query.limit ? +req.query.limit : 15;
+
+    Song.find()
+        // .select("-image")
+        .populate('category', '_id name')
+        // .sort([[order, sortBy]])
+        .limit(limit)
+        .exec((err, data) => {
+            if (err) {
+                res.status(400).json({
+                    error: "Song not found"
+                })
+            }
+            res.json(data)
+        })
+}
 export const songById = (req, res, next, id) => {
     Song.findById(id)
         .populate('category', '_id name')
@@ -73,13 +93,13 @@ export const update = (req, res) => {
     song.save((err, data) => {
         if (err) {
             return res.status(400).json({
-                error: "Cập nhật sản phẩm không thành công!"
+                error: "Cập nhật bài hát không thành công!"
             });
         }
         res.json(data);
     })
-
 }
+
 export const songByCategory = (req, res) => {
     Song.find({ "category": req.category._id }, (err, songs) => {
         if (err) {

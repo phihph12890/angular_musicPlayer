@@ -2,11 +2,11 @@
     <h2 class="text-blue-400 text-2xl" *ngIf=" id_cate == undefined">DANH SÁCH BÀI HÁT <i class="fas fa-chevron-right"></i></h2>
     <h2 class="text-blue-400 text-2xl" *ngIf=" id_cate != undefined" >DANH SÁCH BÀI HÁT <i class="fas fa-chevron-right"></i> {{title_cate}}</h2>
     <hr>
-    <div class="grid grid-cols-2 gap-x-5 my-4" >
-        <div class="col-span-1" *ngFor="let song of songChildren">
+    <div class="grid grid-cols-2 gap-x-10 my-4" >
+        <div class="col-span-1" *ngFor="let song of songs">
             <div class="grid grid-cols-11 gap-x-4 flex items-center cursor-pointer hover:bg-blue-100 rounded-md" (click)="getSong(song)">
                 <div class="col-span-3">
-                    <img class="h-20" src="{{song.img}}" alt="">
+                    <img class=" h-24" src="{{song.image}}" alt="">
                 </div>
                 <div class="col-span-6 items-center">
                     <h5 class="text-sm">{{song.name}}</h5>

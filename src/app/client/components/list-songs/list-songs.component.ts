@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./list-songs.component.css'],
 })
 export class ListSongsComponent implements OnInit {
-  @Input() songChildren: any;
+  @Input() songs: any;
   @Output() getLoadSong = new EventEmitter<any>();
   @Input() id_cate:any;
   @Input() title_cate:any;
@@ -106,11 +106,10 @@ export class ListSongsComponent implements OnInit {
   // ];
   constructor(public route: ActivatedRoute) {}
   ngOnInit(): void {
-    console.log(this.songChildren);
+    console.log(this.songs);
   }
 
   getSong(data: any) {
-    
     this.getLoadSong.emit(data);
   }
 }

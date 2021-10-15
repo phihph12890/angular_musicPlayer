@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CategoryService } from '../../../service/category.service';
 
 @Component({
   selector: 'app-header',
@@ -6,26 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  categories = [
-    {
-      id: 1,
-      name: 'Nhạc trẻ',
-    },
-    {
-      id: 2,
-      name: 'Nhạc Cách mạng',
-    },
-    {
-      id: 3,
-      name: 'Rap Việt',
-    },
-    {
-      id: 4,
-      name: 'Nhạc Vàng',
-    },
-  ];
+  public categories:any
   
-  constructor() {}
+  constructor(private cateService: CategoryService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.cateService.list().subscribe((data) => {
+      this.categories = data;
+    });
+  }
 }

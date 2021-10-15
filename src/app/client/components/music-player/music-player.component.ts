@@ -28,12 +28,13 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
 
   songs = [
     {
-      id: 0,
+      _id: 0,
       genre: 1,
       url: '../assets/Thức Giấc - Blue.mp3',
       name: 'Thức giấc - Blue',
       singer: 'Dalab',
-      img: 'https://avatar-ex-swe.nixcdn.com/song/share/2021/07/14/f/9/f/e/1626231011678.jpg',
+      image:
+        'https://avatar-ex-swe.nixcdn.com/song/share/2021/07/14/f/9/f/e/1626231011678.jpg',
       view: 120,
     },
   ];
@@ -60,13 +61,18 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.start();
-    this.otherPage()
+    if (localStorage.getItem('playList')) {
+      this.songs = JSON.parse(localStorage.getItem('playList')!);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    
     if (changes.playList.currentValue != undefined) {
+      changes.playList.currentValue.view++;
+      console.log(changes.playList.currentValue);
       let existed = this.songs.findIndex(
-        (element) => element.id == changes.playList.currentValue.id
+        (element) => element._id == changes.playList.currentValue._id
       );
       if (existed == -1) {
         this.songs.push(changes.playList.currentValue);
@@ -77,12 +83,11 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
         this.songs.push(changes.playList.currentValue);
         localStorage.setItem('playList', JSON.stringify(this.songs));
       }
+
       this.loadCurrentSong();
       this.play();
     }
-    if (localStorage.getItem('playList')) {
-      this.songs = JSON.parse(localStorage.getItem('playList')!);
-    }
+    
     console.log(this.songs);
   }
 
@@ -221,11 +226,4 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
     localStorage.setItem('playList', JSON.stringify(this.songs));
     location.reload();
   }
-
-  otherPage(){
-    window.addEventListener("hashchange", function(){
-      console.log(1);
-    })
-  }
 }
-

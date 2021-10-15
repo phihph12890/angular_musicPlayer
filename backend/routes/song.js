@@ -1,5 +1,5 @@
 import express from 'express';
-import { list, read, create, update, remove, songById, songByCategory, relateSong, search, sortView } from '../controllers/song';
+import { list, listLimit, read, create, update, remove, songById, songByCategory, relateSong, search, sortView } from '../controllers/song';
 import { categoryById } from '../controllers/category';
 
 const router = express.Router();
@@ -11,6 +11,9 @@ router.get('/songs/sortView', sortView);
 
 //Danh sách bài hát
 router.get('/songs', list);
+
+//Danh sách bài hát(limit)
+router.get('/songsLimit', listLimit);
 
 //Danh sách bài hsat theo danh mục
 router.get('/songs/categories/:categoryId', songByCategory);
