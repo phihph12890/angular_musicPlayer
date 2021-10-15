@@ -5,6 +5,7 @@ import {
   OnChanges,
   SimpleChanges,
 } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { SongService } from '../../../service/song.service';
 
 @Component({
@@ -64,7 +65,7 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
     this.ended();
   }
 
-  constructor(public songService: SongService) {}
+  constructor(public songService: SongService, public toastr: ToastrService) {}
 
   ngOnInit(): void {
     if (localStorage.getItem('playList')) {
@@ -157,24 +158,27 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
     this.isPlaying = true;
     this.audioObj.play();
 
-    this.songService.read(this.getCurrentSong()._id).subscribe((data) => {
-      let newView = data.view;
-      newView++;
-      console.log(newView);
-      const newData = {
-        category: `${data.category._id}`,
-        name: `${data.name}`,
-        image: `${data.image}`,
-        singer: `${data.singer}`,
-        url: `${data.url}`,
-        view: `${newView}`,
-      };
-      this.songService
-        .update(this.getCurrentSong()._id, newData)
-        .subscribe((data) => {
-          console.log("OK");
-        });
-    });
+    setTimeout(() => {
+      this.songService.read(this.getCurrentSong()._id).subscribe((data) => {
+      
+        let newView = data.view;
+        newView++;
+        console.log(newView);
+        const newData = {
+          category: `${data.category._id}`,
+          name: `${data.name}`,
+          image: `${data.image}`,
+          singer: `${data.singer}`,
+          url: `${data.url}`,
+          view: `${newView}`,
+        };
+        this.songService
+          .update(this.getCurrentSong()._id, newData)
+          .subscribe((data) => {
+            console.log("OK");
+          });
+      });
+    }, 5000);
 
     (
       document.querySelector('#song_cd') as HTMLElement

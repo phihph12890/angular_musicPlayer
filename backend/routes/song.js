@@ -1,10 +1,13 @@
 import express from 'express';
-import { list, listLimit, read, create, update, remove, songById, songByCategory, relateSong, search, sortView } from '../controllers/song';
+import { list, listLimit, read, create, update, remove, songById, songByCategory, relateSong, searchByName,searchBySinger, sortView } from '../controllers/song';
 import { categoryById } from '../controllers/category';
 
 const router = express.Router();
-//Tìm kiếm bài hát
-router.get('/songs/search', search);
+//Tìm kiếm bài hát theo tên
+router.get('/songs/searchByName', searchByName);
+
+//Tìm kiếm bài hát theo ca sĩ
+router.get('/songs/searchBySinger', searchBySinger);
 
 //Sắp xếp theo lượt nghe
 router.get('/songs/sortView', sortView);

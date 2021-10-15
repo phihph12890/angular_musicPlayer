@@ -128,7 +128,7 @@ export const relateSong = (req, res) => {
             res.json(songs)
         })
 }
-export const search = (req, res) => {
+export const searchByName = (req, res) => {
     let name_like = req.query.name_like ? req.query.name_like : "";
     // console.log(name_like);
     Song.find({
@@ -142,28 +142,27 @@ export const search = (req, res) => {
         res.json(songs)
     })
 }
-// export const filterPrice = (req, res) => {
-//     let price1 = req.query.price1 ? req.query.price1 : "";
-//     let price2 = req.query.price2 ? req.query.price2 : "";
-//     console.log("price1", price1);
-//     console.log("price2", price2);
-//     Product.find({
-//         $and: [{ 'priceSale': { $gte: price1 } }, { 'priceSale': { $lte: price2 } }]
-//     }).exec((err, products) => {
-//         if (err) {
-//             res.status(400).json({
-//                 error: "Product not found"
-//             })
-//         }
-//         res.json(products)
-//     })
-// }
+export const searchBySinger = (req, res) => {
+    let singer_like = req.query.singer_like ? req.query.singer_like : "";
+    Song.find({
+        "singer": { $regex: `${singer_like}`, $options: '$i' }
+    }).exec((err, songs) => {
+        if (err) {
+            res.status(400).json({
+                error: "Song not found"
+            })
+        }
+        res.json(songs)
+    })
+}
 export const sortView= (req, res) => {
-    let level = req.query.level ? req.query.level : "";
+    let level = req.query.level ? req.query.level : "-1";
+    let limit = req.query.limit ? req.query.limit : 10;
     Song.find()
         .sort({
             view: level
         })
+        .limit(limit)
         .exec((err, songs) => {
         if (err) {
             res.status(400).json({

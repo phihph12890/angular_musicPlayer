@@ -4,12 +4,12 @@
     <hr>
     <div class="grid grid-cols-2 gap-x-10 my-4" >
         <div class="col-span-1" *ngFor="let song of songs">
-            <div class="grid grid-cols-11 gap-x-4 flex items-center cursor-pointer hover:bg-blue-100 rounded-md" (click)="getSong(song)">
-                <div class="col-span-3">
-                    <img class=" h-24" src="{{song.image}}" alt="">
+            <div class="grid grid-cols-11 gap-x-4 flex items-center cursor-pointer hover:bg-blue-100 rounded-md group" (click)="getSong(song)">
+                <div class="col-span-3 overflow-hidden">
+                    <img class=" h-24 transition duration-300 ease-in-out transform group-hover:scale-110" src="{{song.image}}" alt="">
                 </div>
                 <div class="col-span-6 items-center">
-                    <h5 class="text-sm">{{song.name}}</h5>
+                    <h5 class="text-sm group-hover:text-blue-600">{{song.name}}</h5>
                     <p class="text-xs">{{song.singer}}</p>
                 </div>
                 <div class="col-span-2">

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 import { ClientRoutingModule } from './client-routing.module';
 import { ClientComponent } from './client.component';
@@ -12,6 +13,7 @@ import { ListRankSongsComponent } from './components/list-rank-songs/list-rank-s
 import { MusicPlayerComponent } from './components/music-player/music-player.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { CategoryPageComponent } from './pages/category-page/category-page.compo
     MusicPlayerComponent,
     HomePageComponent,
     CategoryPageComponent,
+    SearchPageComponent,
   ],
-  imports: [CommonModule, ClientRoutingModule],
+  imports: [CommonModule, ClientRoutingModule, FormsModule],
 })
 export class ClientModule {}

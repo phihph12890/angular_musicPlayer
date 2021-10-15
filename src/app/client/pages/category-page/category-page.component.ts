@@ -1,5 +1,6 @@
 import { Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from '../../../service/category.service';
 import { SongService } from '../../../service/song.service';
 
@@ -17,7 +18,8 @@ export class CategoryPageComponent implements OnInit {
   constructor(
     public route: ActivatedRoute,
     public cateService: CategoryService,
-    public songService: SongService
+    public songService: SongService,
+    public toastr: ToastrService
   ) {
     route.params.subscribe((obj) => {
       this.id_cate = obj.id;
@@ -49,5 +51,6 @@ export class CategoryPageComponent implements OnInit {
   }
   getLoadSongParent(data: any) {
     this.dataSong = data;
+    this.toastr.success("Thêm vào PlayList thành công!");
   }
 }

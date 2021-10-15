@@ -1,18 +1,19 @@
 <div>
     <h2 class="text-blue-400 text-2xl ml-4">BXH BÀI HÁT <i class="fas fa-chevron-right"></i></h2>
     <div class="flex ml-3 text-sm">
-        <button class="bg-red-500 px-4 border-r  rounded-l-full text-white ">Ngày</button>
-        <button class="py-2 bg-gray-200 px-4 hover:bg-red-500 hover:text-white">Tuần</button>
-        <button class="bg-gray-200 px-4 border-l rounded-r-full hover:bg-red-500 hover:text-white">Tháng</button>
+        <button class="bg-red-500 px-4 border-r  rounded-l-full text-white ">Việt Nam</button>
+        <button class="py-2 bg-gray-200 px-4 hover:bg-red-500 hover:text-white">Âu Mỹ</button>
+        <button class="bg-gray-200 px-4 border-l rounded-r-full hover:bg-red-500 hover:text-white">Hàn Quốc</button>
     </div>
 </div>
 <div class="mt-4">
-    <div class="ml-1 flex items-center my-2" *ngFor="let song of songs, let i = index">
-        <p class="text-2xl text-red-500 ml-3 mt-1">{{i+1}}</p>
-        <img  src="{{song.img}}" class="w-20 h-[75px] ml-4" alt="">
-        <div class="ml-3">
-            <h5 class="text-sm">{{song.name}}</h5>
-            <p class="text-xs">{{song.singer}}</p>
+    <div class="ml-1 flex items-center my-3 hover:bg-blue-100 cursor-pointer rounded-md group" *ngFor="let song of rankSongs, let i = index let color of colors" (click)="getSong(song)">
+        <p class="text-2xl text-[#2d1a4c] font-semibold mt-1 w-10 text-center">{{i+1}}</p>
+        <img  src="{{song.image}}" class="w-20 h-[80px] transition duration-300 ease-in-out transform group-hover:scale-110" alt="">
+        <div class="ml-3 leading-none">
+            <h5 class="text-sm mt-1">{{song.name}}</h5>
+            <p class="text-xs mb-2 text-gray-700 font-medium">{{song.singer}}</p>
+            <p class="text-xs font-semibold"><i class="fas fa-headphones-alt"></i> {{song.view}}</p>
         </div>
     </div>
 </div>

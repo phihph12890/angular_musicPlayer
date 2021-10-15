@@ -1,0 +1,15 @@
+<div class="">
+    <div class="container">
+        <app-header></app-header>
+    </div>
+    <div class="container">
+        <div class="mt-4">
+            <app-list-songs [songs]="songs" [keyword]="keyword" (getLoadSong)="getLoadSongParent($event)"></app-list-songs>
+        </div>
+    </div>
+    <div class=" fixed bottom-0 left-0 right-0 z-50">
+        <app-music-player [playList]='dataSong'></app-music-player>
+    </div>
+    <app-footer></app-footer>
+</div>
+

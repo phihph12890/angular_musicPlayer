@@ -4,28 +4,28 @@
     </a>
     <ul class="flex justify-items-stretch text-sm font-semibold pt-3">
         <li class="pr-3 hover:text-blue-400 cursor-pointer group relative"><a routerLink="/" class="no-underline text-gray-900 hover:text-blue-500">Trang chủ</a></li>
-        <li class="px-3 hover:text-blue-400 cursor-pointer group pb-1">Thể loại
-            <ul  class=" absolute hidden group-hover:block bg-white border border-gray-300 -ml-8 z-10 mt-1 pt-2">
-                <li class="flex items-center h-10 hover:text-blue-500 pr-5" *ngFor="let category of categories"><a routerLink="/category/{{category._id}}" class="no-underline text-gray-900 hover:text-blue-500" >{{category.name}}</a></li>
+        <li class="px-3 hover:text-blue-400 cursor-pointer group pb-2">Thể loại
+            <ul  class="absolute hidden group-hover:block bg-white border border-gray-300 -ml-8 z-10 mt-1 pl-0">
+                <li class="flex items-center h-[44px] hover:text-blue-500 hover:bg-gray-100" *ngFor="let category of categories"><a routerLink="/category/{{category._id}}" class="no-underline text-gray-900 hover:text-blue-500 mx-[35px]">{{category.name}}</a></li>
             </ul> 
         </li>
         <li class="px-3 hover:text-blue-400 cursor-pointer group">Tuyển tập</li>
         <li class="px-3 hover:text-blue-400 cursor-pointer group">Video</li>
         <li class="px-3 hover:text-blue-400 cursor-pointer group">BXH
-            <ul class=" absolute hidden group-hover:block bg-white border border-gray-300 -ml-5 mt-1 z-10" style="width: 150px;">
+            <!-- <ul class=" absolute hidden group-hover:block bg-white border border-gray-300 -ml-5 mt-1 z-10" style="width: 150px;">
                 <li class="flex items-center h-10 hover:text-blue-500 "><a href="" class="no-underline text-gray-900 hover:text-blue-500">BXH Ngày</a></li>
                 <li class="flex items-center h-10 hover:text-blue-500 "><a href="" class="no-underline text-gray-900 hover:text-blue-500">BXH Tuần</a></li>
                 <li class="flex items-center h-10 hover:text-blue-500 "><a href="" class="no-underline text-gray-900 hover:text-blue-500">BXH Tháng</a></li>
-            </ul>
+            </ul> -->
         </li>
         <li class="px-3 hover:text-blue-400 cursor-pointer group">Chủ đề</li>
     </ul>
     <div class="ml-16">
-        <form class=" outline-none px-2 py-1 inline-flex bg-gray-100 rounded-md " id="demo-search">
+        <form class="outline-none px-2 py-1 inline-flex bg-gray-100 rounded-md " id="search" (submit)="search()">
             <svg class="text-gray-500 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            <input type="search" placeholder="Tìm kiếm" class=" bg-gray-100 px-3 rounded-full placeholder-gray-400 outline-none">
+            <input type="search" placeholder="Tìm kiếm" name="keyword" [(ngModel)]="keyword" class=" bg-gray-100 px-3 rounded-full placeholder-gray-400 outline-none" >
         </form>
     </div>
     <div class="flex">

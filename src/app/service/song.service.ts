@@ -32,5 +32,16 @@ export class SongService {
   update(id:any, data:any): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}/songs/${id}`, data);
   }
-  
+  sortView(): Observable<any> {
+    let listSortView = `${environment.apiUrl}/songs/sortView`;
+    return this.http.get<any>(listSortView);
+  }
+  searchByName(keyword:any): Observable<any> {
+    let data = `${environment.apiUrl}/songs/searchByName?name_like=${keyword}`;
+    return this.http.get<any>(data);
+  }
+  searchBySinger(keyword:any): Observable<any> {
+    let data = `${environment.apiUrl}/songs/searchBySinger?singer_like=${keyword}`;
+    return this.http.get<any>(data);
+  }
 }

@@ -31,7 +31,7 @@
                 </div>
             </div>
             <div class="col-span-3">
-                <app-list-rank-songs></app-list-rank-songs>
+                <app-list-rank-songs [rankSongs]="rankSongs" (getLoadSong)="getLoadSongParent($event)"></app-list-rank-songs>
             </div>
         </div>
     </div>

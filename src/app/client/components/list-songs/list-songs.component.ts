@@ -11,6 +11,7 @@ export class ListSongsComponent implements OnInit {
   @Output() getLoadSong = new EventEmitter<any>();
   @Input() id_cate:any;
   @Input() title_cate:any;
+  @Input() keyword: any
   
   
   constructor(public route: ActivatedRoute) {}
