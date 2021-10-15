@@ -15,7 +15,6 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.songService.listLimit().subscribe((data) => {
       this.songs = data;
-      console.log(this.songs);
     });
   }
   getLoadSongParent(data: any) {

@@ -106,7 +106,6 @@ export class ListSongsComponent implements OnInit {
   // ];
   constructor(public route: ActivatedRoute) {}
   ngOnInit(): void {
-    console.log(this.songs);
   }
 
   getSong(data: any) {

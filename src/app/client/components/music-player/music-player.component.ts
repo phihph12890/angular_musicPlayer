@@ -24,8 +24,7 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
   song_currentTimeString: string = '00:00';
 
   audioObj = new Audio();
-  currentIndex = 0;
-
+  
   songs = [
     {
       _id: 0,
@@ -38,6 +37,7 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
       view: 120,
     },
   ];
+  currentIndex = this.songs.length-1;
 
   // lấy thông tin bài hát hiện tại
   getCurrentSong() {
@@ -47,6 +47,7 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
   //tải thông tin bài hát hiện tại
   loadCurrentSong() {
     this.audioObj.src = this.getCurrentSong().url;
+    console.log(this.getCurrentSong());
     this.audioObj.load();
   }
 
@@ -55,19 +56,21 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
     this.loadCurrentSong();
     this.seeking();
     this.ended();
+    
   }
 
   constructor() {}
 
   ngOnInit(): void {
-    this.start();
     if (localStorage.getItem('playList')) {
       this.songs = JSON.parse(localStorage.getItem('playList')!);
     }
+    this.currentIndex = this.songs.length - 1;
+
+    this.start();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    
     if (changes.playList.currentValue != undefined) {
       changes.playList.currentValue.view++;
       console.log(changes.playList.currentValue);
@@ -78,16 +81,20 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
         this.songs.push(changes.playList.currentValue);
         localStorage.setItem('playList', JSON.stringify(this.songs));
         this.currentIndex++;
+        console.log(this.currentIndex);
       } else {
         this.songs.splice(existed, 1);
         this.songs.push(changes.playList.currentValue);
         localStorage.setItem('playList', JSON.stringify(this.songs));
       }
 
+      if (localStorage.getItem('playList')) {
+        this.songs = JSON.parse(localStorage.getItem('playList')!);
+      }
       this.loadCurrentSong();
       this.play();
     }
-    
+
     console.log(this.songs);
   }
 
