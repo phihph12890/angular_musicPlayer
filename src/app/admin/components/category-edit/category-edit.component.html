@@ -9,6 +9,7 @@
                 <input type="text" class="form-control mt-4" name="name" formControlName="name" value="data_cate.name">
                 <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)" class="alert alert-danger mt-2">
                     <div *ngIf="f.name.errors?.required">Tên danh mục không được để trống</div>
+                    <div *ngIf="f.name.errors?.uniqueCate">Tên danh mục đã tồn tại</div>
                 </div>
                 <button type="submit" [disabled]="!cateForm.valid" class="btn btn-primary mt-3">CẬP NHẬT</button>
             </div>

@@ -28,4 +28,7 @@ export class CategoryService {
     let data = `${environment.apiUrl}/categories/${id}`;
     return this.http.delete<any>(data);
   }
+  searchByName(keyword: string): Observable<any>{
+    return this.http.get<any>(`${environment.apiUrl}/categories/searchByName?name_like=${keyword}`);
+  }
 }

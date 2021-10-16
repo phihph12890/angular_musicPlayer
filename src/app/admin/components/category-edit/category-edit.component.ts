@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../../../service/category.service';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { uniqueCategoryName } from 'src/custom_validate/category.validator';
 
 @Component({
   selector: 'app-category-edit',
@@ -26,7 +27,7 @@ export class CategoryEditComponent implements OnInit {
 
     });
     this.cateForm = this.fb.group({
-      name: ['', Validators.required]
+      name: ['', Validators.required, uniqueCategoryName(this.cateService)]
     })
   }
   get f(){

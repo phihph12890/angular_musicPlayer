@@ -82,3 +82,17 @@ export const listRelated = (req, res) => {
         res.json(category)
     })
 }
+export const searchByName = (req, res) => {
+    let name_like = req.query.name_like ? req.query.name_like : "";
+    // console.log(name_like);
+    Category.find({
+        "name": { $regex: `${name_like}`, $options: '$i' }
+    }).exec((err, cate) => {
+        if (err) {
+            res.status(400).json({
+                error: "Cate not found"
+            })
+        }
+        res.json(cate)
+    })
+}

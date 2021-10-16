@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../../service/category.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-category-manager',
@@ -8,8 +9,11 @@ import { CategoryService } from '../../../service/category.service';
 })
 export class CategoryManagerComponent implements OnInit {
   public categories: any;
-  dataEdit:any[]=[]
-  constructor(public cateService: CategoryService) {
+  dataEdit: any[] = [];
+  constructor(
+    public cateService: CategoryService,
+    public toastr: ToastrService
+  ) {
     cateService.list().subscribe((data) => {
       this.categories = data;
       console.log(this.categories);
@@ -17,12 +21,15 @@ export class CategoryManagerComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-  
+
   btnClickDelete(removeId: any) {
-    this.cateService.delete(removeId).subscribe(data => {
-      console.log(data);
-      console.log("xoá thành công");
-      location.reload();
-    })
+    const Confirm = confirm('Bạn có thật sự muốn xoá danh mục này?');
+    if (Confirm) {
+      this.cateService.delete(removeId).subscribe((data) => {
+        console.log(data);
+        this.toastr.success("Xoá thành công!");
+        location.reload();
+      });
+    }
   }
 }
