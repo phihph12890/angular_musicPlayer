@@ -84,22 +84,23 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.playList.currentValue != undefined) {
-      let view = changes.playList.currentValue.view;
-      view++;
-      console.log(view);
-      const newData = {
-        category: `${changes.playList.currentValue.category._id}`,
-        name: `${changes.playList.currentValue.name}`,
-        image: `${changes.playList.currentValue.image}`,
-        singer: `${changes.playList.currentValue.singer}`,
-        url: `${changes.playList.currentValue.url}`,
-        view: `${view}`,
-      };
-      this.songService
-        .update(changes.playList.currentValue._id, newData)
-        .subscribe((data) => {
-          console.log("OK");
-        });
+
+      // let view = changes.playList.currentValue.view;
+      // view++;
+      // console.log(view);
+      // const newData = {
+      //   category: `${changes.playList.currentValue.category._id}`,
+      //   name: `${changes.playList.currentValue.name}`,
+      //   image: `${changes.playList.currentValue.image}`,
+      //   singer: `${changes.playList.currentValue.singer}`,
+      //   url: `${changes.playList.currentValue.url}`,
+      //   view: `${view}`,
+      // };
+      // this.songService
+      //   .update(changes.playList.currentValue._id, newData)
+      //   .subscribe((data) => {
+      //     console.log("OK");
+      //   });
 
       
       let existed = this.songs.findIndex(
@@ -158,28 +159,24 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
     this.isPlaying = true;
     this.audioObj.play();
 
-    setTimeout(() => {
-      this.songService.read(this.getCurrentSong()._id).subscribe((data) => {
-      
-        let newView = data.view;
-        newView++;
-        console.log(newView);
-        const newData = {
-          category: `${data.category._id}`,
-          name: `${data.name}`,
-          image: `${data.image}`,
-          singer: `${data.singer}`,
-          url: `${data.url}`,
-          view: `${newView}`,
-        };
-        this.songService
-          .update(this.getCurrentSong()._id, newData)
-          .subscribe((data) => {
-            console.log("OK");
-          });
-      });
-    }, 5000);
-
+    this.songService.read(this.getCurrentSong()._id).subscribe((data) => {
+      let newView = data.view;
+      newView++;
+      console.log(newView);
+      const newData = {
+        // category: `${data.category._id}`,
+        // name: `${data.name}`,
+        // image: `${data.image}`,
+        // singer: `${data.singer}`,
+        // url: `${data.url}`,
+        view: `${newView}`,
+      };
+      this.songService
+        .update(this.getCurrentSong()._id, newData)
+        .subscribe((data) => {
+          console.log("View++");
+        });
+    });
     (
       document.querySelector('#song_cd') as HTMLElement
     ).style.animationPlayState = 'running';
