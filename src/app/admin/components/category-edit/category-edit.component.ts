@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from '../../../service/category.service';
+import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-category-edit',
@@ -9,21 +11,35 @@ import { CategoryService } from '../../../service/category.service';
 })
 export class CategoryEditComponent implements OnInit {
   public id_cate: any;
-  public data_cate:any;
+  cateForm: FormGroup;
   constructor(
-    private activeRoute: ActivatedRoute,
     private router: Router,
-    public cateService: CategoryService
+    public cateService: CategoryService,
+    public toastr: ToastrService, 
+    private fb: FormBuilder
   ) {
     this.id_cate = router.url.split('/')[3];
     console.log(this.id_cate);
     cateService.read(this.id_cate).subscribe((data) => {
-      this.data_cate = data;
+      console.log(data);
+      this.cateForm.setValue({name: data.name})
+
     });
+    this.cateForm = this.fb.group({
+      name: ['', Validators.required]
+    })
+  }
+  get f(){
+    return this.cateForm.controls;
   }
 
-  ngOnInit(): void {}
-  update(){
-    console.log(2);
+  ngOnInit(): void {
+    
+  }
+  onSubmit(){
+    this.cateService.update(this.id_cate, this.cateForm.value).subscribe((data) => {
+      this.toastr.success("Sửa danh mục thành công!");
+      this.router.navigate(['/admin/category-manager']);
+    });
   }
 }

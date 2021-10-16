@@ -19,7 +19,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot({
       timeOut: 1700,
       progressBar: true,
-      positionClass: 'toast-bottom-right',
+      positionClass: 'toast-top-right',
     }),
   ],
   providers: [],

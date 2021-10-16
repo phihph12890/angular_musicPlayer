@@ -7,6 +7,7 @@ import { CategoryManagerComponent } from './components/category-manager/category
 import { SongManagerComponent } from './components/song-manager/song-manager.component';
 import { CategoryEditComponent } from './components/category-edit/category-edit.component';
 import { CateListComponent } from './components/cate-list/cate-list.component';
+import { CategoryAddComponent } from './components/category-add/category-add.component';
 
 const routes: Routes = [
   { 
@@ -20,6 +21,10 @@ const routes: Routes = [
       { 
         path: 'category-manager',
         component: CategoryManagerComponent,
+      },
+      { 
+        path: 'category-add',
+        component: CategoryAddComponent,
       },
       {
         path: 'update',

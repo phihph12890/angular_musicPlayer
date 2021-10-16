@@ -3,11 +3,14 @@
         <h1 class="h2">SỬA DANH MỤC</h1>
     </div>
     <div class="w-1/2 mx-auto mt-20">
-        <form>
+        <form [formGroup]="cateForm" (ngSubmit)="onSubmit()">
             <div class="text-center">
                 <label for="" class="text-2xl font-semibold">Tên Danh Mục</label>
-                <input type="text" class="form-control mt-4" value="{{data_cate.name}}">
-                <button type="submit" class="btn btn-primary mt-3" (click)="update()">CẬP NHẬT</button>
+                <input type="text" class="form-control mt-4" name="name" formControlName="name" value="data_cate.name">
+                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="f.name.errors?.required">Tên danh mục không được để trống</div>
+                </div>
+                <button type="submit" [disabled]="!cateForm.valid" class="btn btn-primary mt-3">CẬP NHẬT</button>
             </div>
         </form>
     </div>
