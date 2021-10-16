@@ -1,8 +1,14 @@
 module.exports = {
   mode: 'jit',
   purge: [
+    './src/app/client/*.{html,ts}',
     './src/app/client/**/*.{html,ts}',
+    './src/app/client/**/**/*.{html,ts}',
     './src/app/client/components/**/*.{html,ts}',
+    './src/app/admin/*.{html,ts}',
+    './src/app/admin/**/*.{html,ts}',
+    './src/app/admin/**/**/*.{html,ts}',
+    './src/app/admin/components/**/*.{html,ts}',
     './src/index.html',
     './src/app/*.{html,ts}'
   ],

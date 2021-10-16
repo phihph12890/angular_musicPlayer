@@ -21,4 +21,8 @@ export class CategoryService {
     let data = `${environment.apiUrl}/categories/${id}`;
     return this.http.get<any>(data);
   }
+  delete(id:any): Observable<any> {
+    let data = `${environment.apiUrl}/categories/${id}`;
+    return this.http.delete<any>(data);
+  }
 }

@@ -1,0 +1,33 @@
+<div>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">QUẢN TRỊ DANH MỤC</h1>
+    </div>
+    <div class="">
+        <table class="table table-hover mx-auto mt-[80px] text-center" style="width: 50%">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">STT</th>
+                    <th scope="col">TÊN DANH MỤC</th>
+                    <th class="text-center" colspan="2" scope="col">TUỲ CHỌN</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let cate of categories, let i = index">
+                <tr>
+                    <th scope="row" style="width: 100px;">{{i+1}}</th>
+                    <td class="font-semibold" style="width: 400px;">{{cate.name}}</td>
+                    <td style="width: 100px;">
+                        <a class="text-sm px-1 rounded-lg bg-blue-500 hover:bg-blue-700 text-white btn btn-primary" 
+                        routerLink="/admin/update/{{cate._id}}"><i class="px-1 far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <button class="text-sm px-1 rounded-lg bg-red-500 hover:bg-red-700 text-white btn btn-danger btn-remove" 
+                            (click)="btnClickDelete(cate._id)"><i class="px-1 fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
