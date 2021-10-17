@@ -6,7 +6,7 @@
         <form [formGroup]="cateForm" (ngSubmit)="onSubmit()">
             <div class="text-center">
                 <label for="" class="text-2xl font-semibold">Tên Danh Mục</label>
-                <input type="text" class="form-control mt-4" name="name" formControlName="name" value="data_cate.name">
+                <input type="text" class="form-control mt-4" name="name" formControlName="name" value="">
                 <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)" class="alert alert-danger mt-2">
                     <div *ngIf="f.name.errors?.required">Tên danh mục không được để trống</div>
                     <div *ngIf="f.name.errors?.uniqueCate">Tên danh mục đã tồn tại</div>

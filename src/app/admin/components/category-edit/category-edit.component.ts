@@ -24,7 +24,7 @@ export class CategoryEditComponent implements OnInit {
     cateService.read(this.id_cate).subscribe((data) => {
       console.log(data);
       this.cateForm.setValue({name: data.name})
-
+      
     });
     this.cateForm = this.fb.group({
       name: ['', Validators.required, uniqueCategoryName(this.cateService)]

@@ -47,7 +47,7 @@ const routes: Routes = [
         component: SongAddComponent,
       },
       {
-        path: 'category-update',
+        path: 'song-update',
         component: SongEditComponent,
         children: [
           { 

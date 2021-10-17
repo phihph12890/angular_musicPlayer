@@ -23,9 +23,6 @@ export class SongAddComponent implements OnInit {
   isUploadingAlbum: boolean = false;
   isUploadingSong: boolean = false;
 
-  isCompleteUploadingAlbum: boolean = false;
-  isCompleteUploadingSong: boolean = false;
-
   songForm: FormGroup;
   public taskAlbum: AngularFireUploadTask;
   public taskSong: AngularFireUploadTask;

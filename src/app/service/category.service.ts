@@ -14,6 +14,10 @@ export class CategoryService {
     let listCate = `${environment.apiUrl}/categories`;
     return this.http.get<any>(listCate);
   }
+  listRelated(id:any): Observable<any> {
+    let listCateRelated = `${environment.apiUrl}/categories/related/${id}`;
+    return this.http.get<any>(listCateRelated);
+  }
   create(data: any): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/categories`, data);
   }
