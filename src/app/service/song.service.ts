@@ -32,6 +32,10 @@ export class SongService {
   update(id:any, data:any): Observable<any> {
     return this.http.put<any>(`${environment.apiUrl}/songs/${id}`, data);
   }
+  delete(id:any): Observable<any> {
+    let data = `${environment.apiUrl}/songs/${id}`;
+    return this.http.delete<any>(data);
+  }
   sortView(): Observable<any> {
     let listSortView = `${environment.apiUrl}/songs/sortView`;
     return this.http.get<any>(listSortView);

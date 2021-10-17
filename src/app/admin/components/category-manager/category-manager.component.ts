@@ -9,7 +9,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class CategoryManagerComponent implements OnInit {
   public categories: any;
-  dataEdit: any[] = [];
   constructor(
     public cateService: CategoryService,
     public toastr: ToastrService

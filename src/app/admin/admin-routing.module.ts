@@ -8,6 +8,8 @@ import { SongManagerComponent } from './components/song-manager/song-manager.com
 import { CategoryEditComponent } from './components/category-edit/category-edit.component';
 import { CateListComponent } from './components/cate-list/cate-list.component';
 import { CategoryAddComponent } from './components/category-add/category-add.component';
+import { SongAddComponent } from './components/song-add/song-add.component';
+import { SongEditComponent } from './components/song-edit/song-edit.component';
 
 const routes: Routes = [
   { 
@@ -27,7 +29,7 @@ const routes: Routes = [
         component: CategoryAddComponent,
       },
       {
-        path: 'update',
+        path: 'category-update',
         component: CategoryEditComponent,
         children: [
           { 
@@ -39,6 +41,20 @@ const routes: Routes = [
       { 
         path: 'song-manager',
         component: SongManagerComponent
+      },
+      { 
+        path: 'song-add',
+        component: SongAddComponent,
+      },
+      {
+        path: 'category-update',
+        component: SongEditComponent,
+        children: [
+          { 
+            path: ':id',
+            component: SongEditComponent,
+          }
+        ]
       },
     ]
   }

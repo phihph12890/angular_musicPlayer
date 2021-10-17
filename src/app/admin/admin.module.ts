@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
@@ -12,6 +15,7 @@ import { CategoryAddComponent } from './components/category-add/category-add.com
 import { CategoryEditComponent } from './components/category-edit/category-edit.component';
 import { HomeComponent } from './components/home/home.component';
 import { CateListComponent } from './components/cate-list/cate-list.component';
+import { environment } from 'src/environments/environment';
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { CateListComponent } from './components/cate-list/cate-list.component';
     CommonModule,
     AdminRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireStorageModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'cloud'),
   ]
 })
 export class AdminModule { }

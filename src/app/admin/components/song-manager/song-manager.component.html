@@ -1,1 +1,45 @@
-<p>song-manager works!</p>
+<div class="pb-[100px]">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">QUẢN TRỊ BÀI HÁT</h1>
+    </div>
+    <div class="">
+        <div class="text-center mt-[30px]">
+            <a routerLink="/admin/song-add">
+                <button class="btn btn-primary mx-auto">Thêm Bài Hát</button>
+            </a>
+        </div>
+        <table class="table table-hover mx-auto mt-[50px] text-center" style="width: 80%">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">STT</th>
+                    <th scope="col">Tên bài hát</th>
+                    <th scope="col">Danh mục</th>
+                    <th scope="col">Ca sĩ</th>
+                    <th scope="col">Album</th>
+                    <th class="text-center" colspan="2" scope="col">TUỲ CHỌN</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let song of songs, let i = index">
+                <tr>
+                    <th scope="row"><div class="mt-[20px]">{{i+1}}</div></th>
+                    <td scope="row"><div class="mt-[20px]">{{song.name}}</div></td>
+                    <td scope="row"><div class="mt-[20px]">{{song.category.name}}</div></td>
+                    <td scope="row"><div class="mt-[20px]">{{song.singer}}</div></td>
+                    <td scope="row" style="width: 170px;"><img class="w-[70px] h-[70px] mx-auto rounded-full" src="{{song.image}}" alt=""></td>
+                    <td style="width: 100px;">
+                        <a class="text-sm px-1 rounded-lg bg-blue-500 hover:bg-blue-700 text-white btn btn-primary" 
+                        ><i class="px-1 far fa-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <button class="text-sm px-1 rounded-lg bg-red-500 hover:bg-red-700 text-white btn btn-danger btn-remove" 
+                        (click)="btnClickDelete(song._id)"><i class="px-1 fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

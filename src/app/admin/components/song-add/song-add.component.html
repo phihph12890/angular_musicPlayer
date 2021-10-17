@@ -1,1 +1,59 @@
-<p>song-add works!</p>
+<div class="pb-[250px]">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">THÊM MỚI BÀI HÁT</h1>
+    </div>
+    <div class="w-1/2 mx-auto mt-[50px]">
+        <form [formGroup]="songForm" (ngSubmit)="onSubmit()">
+            <div class="mt-4">
+                <label for="" class="text-2xl font-semibold">Danh Mục</label><br>
+                <select class="form-select" name="category" formControlName="category" style="width: 300px">
+                    <option *ngFor="let cate of categories" value="{{cate._id}}">{{cate.name}}</option>
+                </select>
+                <div *ngIf="f.category.invalid && (f.category.dirty || f.category.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="f.category.errors?.required">Hãy chọn danh mục!</div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label for="" class="text-2xl font-semibold">Tên Bài Hát</label>
+                <input type="text" class="form-control mt-1" name="name" formControlName="name">
+                <div *ngIf="f.name.invalid && (f.name.dirty || f.name.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="f.name.errors?.required">Hãy nhập tên bài hát!</div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label for="" class="text-2xl font-semibold">Tên Ca Sĩ</label>
+                <input type="text" class="form-control mt-1" name="singer" formControlName="singer">
+                <div *ngIf="f.singer.invalid && (f.singer.dirty || f.singer.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="f.singer.errors?.required">Hãy nhập tên ca sĩ!</div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label for="" class="text-2xl font-semibold">Album</label>
+                <input type="file" class="form-control mt-1" name="image" formControlName="image" (change)="selectAlbum($event)">
+                <!-- <div >{{ uploadPercentAlbum | async }} %</div> -->
+                <div class="progress mt-1" *ngIf="isUploadingAlbum">
+                    <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 100%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">Progress: | {{ uploadPercentAlbum | async }}% Complete</div>
+                    <!-- <div>Progress: | {{ uploadPercentAlbum | async }}% Complete <span class="text-green-500" *ngIf="uploadPercentAlbum == 0"><i class="fas fa-check"></i></span></div> -->
+                </div>
+                <div *ngIf="f.image.invalid && (f.image.dirty || f.image.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="f.image.errors?.required">Hãy chọn Album!</div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <label for="" class="text-2xl font-semibold">URL</label>
+                <!-- <textarea class="form-control mt-1" name="url" formControlName="url" cols="30" rows="4"></textarea> -->
+                <input type="file" class="form-control mt-1" name="url" formControlName="url" (change)="selectSong($event)">
+                <div class="progress" *ngIf="isUploadingSong">
+                    <div class="progress-bar progress-bar-striped bg-primary" role="progressbar" style="width: 100%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">Progress: | {{ uploadPercentSong| async }}% Complete</div>
+                    <!-- <div>Progress: |{{ uploadPercentSong | async }}% Complete <span class="text-green-500" *ngIf="uploadPercentAlbum == 0"><i class="fas fa-check"></i></span></div> -->
+                </div>
+                <div *ngIf="f.url.invalid && (f.url.dirty || f.url.touched)" class="alert alert-danger mt-2">
+                    <div *ngIf="f.url.errors?.required">Hãy nhập URL bài hát!</div>
+                </div>
+            </div>
+            <div>
+                <button type="submit" [disabled]="!songForm.valid" class="btn btn-primary mt-3">THÊM MỚI</button>
+            </div>
+        </form>
+    </div>
+</div>

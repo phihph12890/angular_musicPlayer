@@ -4,7 +4,15 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:5000/api"
+  apiUrl: "http://localhost:5000/api",
+  firebaseConfig : {
+    apiKey: "AIzaSyCS3_BKcbhu3bsHPcNHL44GN_kp9M5rHlw",
+    authDomain: "angular-musicplayer.firebaseapp.com",
+    projectId: "angular-musicplayer",
+    storageBucket: "angular-musicplayer.appspot.com",
+    messagingSenderId: "125394853634",
+    appId: "1:125394853634:web:aa47c15f390568e3356c1b"
+  }
 };
 
 /*
