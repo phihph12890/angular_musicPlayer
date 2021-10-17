@@ -39,7 +39,7 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
       image:
         'https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/covers/3/4/34b2e5792d3f467216560a317a6ff7f2_1460691568.jpg',
       singer: 'JustaTee, BigDaddy',
-      url: 'https://mp3-320s1-zmp3.zadn.vn/870b53eff5ab1cf545ba/7451055051003544818?authen=exp=1634401788~acl=/870b53eff5ab1cf545ba/*~hmac=baa90fe28668e5ee94a837419c5f327d&fs=MTYzNDIyODk4ODQyMnx3ZWJWNnwxMDmUsIC1OTE5OTYxfDExMy4xNjgdUngNTIdUngMTmUsIC0',
+      url: 'https://firebasestorage.googleapis.com/v0/b/angular-musicplayer.appspot.com/o/songs%2F2AM.mp3?alt=media&token=c99c31bd-171b-49d9-9ecc-8ff8eef58e19',
       createdAt: '2021-10-14T16:30:59.424Z',
       updatedAt: '2021-10-14T16:30:59.424Z',
       __v: 0,
