@@ -75,6 +75,7 @@ export class SongAddComponent implements OnInit {
       )
       .subscribe();
   }
+  
   selectSong(e: any) {
     this.song = e.target.files[0];
     const songRef = this.storage.ref(`songs/${this.song.name}`);

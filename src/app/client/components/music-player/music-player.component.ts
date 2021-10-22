@@ -275,7 +275,7 @@ export class MusicPlayerComponent implements OnInit, OnChanges {
   deletePlayList() {
     this.songs.splice(1, this.songs.length - 1);
     localStorage.removeItem('playList');
-    localStorage.setItem('playList', JSON.stringify(this.songs));
+    // localStorage.setItem('playList', JSON.stringify(this.songs));
     location.reload();
   }
 }

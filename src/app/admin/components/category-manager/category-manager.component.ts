@@ -20,7 +20,7 @@ export class CategoryManagerComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
+  
   btnClickDelete(removeId: any) {
     const Confirm = confirm('Bạn có thật sự muốn xoá danh mục này?');
     if (Confirm) {
